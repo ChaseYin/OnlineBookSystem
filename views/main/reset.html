@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ChaseTest</title>
+<link href="../../public/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="../../public/fontAwesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<script
+src="https://code.jquery.com/jquery-3.1.1.min.js"
+integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+crossorigin="anonymous"></script>
+</head>
+
+<div class="jumbotron">
+	
+
+	<div class="row">
+		<div class="col-md-12">
+			
+			<form action="/reset" method="POST">
+				<input type="hidden" name='token' value="<%=token %>" />
+			  <h1>Reset Password</h1>
+			  <div class="form-group">
+				<label for="password">New Password</label>
+				<input type="password" name="password" value="" placeholder="New password" autofocus="autofocus" class="form-control"/>
+			  </div>
+			  <div class="form-group">
+				<label for="confirm">Confirm Password</label>
+				<input type="password" name="confirm" value="" placeholder="Confirm password" class="form-control"/>
+			  </div>
+			  <div class="form-group">
+				<button type="submit" class="btn btn-primary">Update Password</button>
+			  </div>
+			</form>
+		</div>
+	</div>
+  </div>
+
+
+
+<script>
+	//alert(window.location.pathname)
+	var path = window.location.pathname;
+	console.log('path是：'+path)
+	function test(){
+		url = path
+		console.log('url是！！！'+url)
+		window.location.href = url;
+		
+	}
+</script>
+
+</html>

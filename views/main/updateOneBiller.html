@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>Manage Individual information</title>
+<link href="../public/css/main.css" rel="stylesheet" type="text/css">
+<link href="../public/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="../public/fontAwesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<script src="../public/js/jquery-1.12.4.min.js"></script>
+
+
+
+</head>
+<body>
+    
+    <div class="jumbotron">
+      <h1 class="display-3"><p class="text-success">Your can add biller information below</p></h1>
+        <h1 class="display-3"></h1>
+        {{id}},{{username}},{{billerName}},{{billerEmail}}
+
+        <!-- <h4><p>Now you can create or modify the biller.</p><h4> -->
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <form action="/updateOneBiller" method="POST">
+                        
+
+                        <fieldset disabled="">
+                            <label class="control-label" for="id" name='id' >Billerid</label>
+                            <input class="form-control" id="disabledInput" type="text" placeholder={{id}} disabled="">
+                          </fieldset>
+
+                      <h1>Input biller information below</h1>
+                      <div class="form-group" style="display:none">
+                        <label for="billerId">billerId</label>
+                        <input type="text" name="billerId" value={{id}} autofocus="autofocus" class="form-control"/>
+                      </div>
+                      <div class="form-group">
+                        <label for="billerName">New invoice name</label>
+                        <input type="text" name="billerName" value="" placeholder="Former invoice name: {{billerName}}" autofocus="autofocus" class="form-control"/>
+                      </div>
+                      <div class="form-group">
+                        <label for="billerEmail">New biller email address</label>
+                        <input type="billerEmail" name="billerEmail" value="" placeholder="Former biller email adress: {{billerEmail}}" autofocus="autofocus" class="form-control"/>
+                      </div>
+                      
+                      
+                      
+                    
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-lg" id='updateBiller'>Update biller</button>
+                      </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+        <p class="lead">
+          <a class="btn btn-primary" href="/" role="button">Back To Home</a>
+        </p>
+      </div>
+
+    
+      
+
+</body>
+</html>

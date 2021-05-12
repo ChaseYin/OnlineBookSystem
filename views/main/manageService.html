@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>Manage service</title>
+<link href="public/css/main.css" rel="stylesheet" type="text/css">
+<link href="public/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="public/fontAwesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<script src="public/js/jquery-1.12.4.min.js"></script>
+
+
+
+</head>
+<body>
+    
+    <div class="jumbotron">
+      <h1 class="display-3"><p class="text-success">Your can manage service below</p></h1>
+        <h1 class="display-3"></h1>
+        
+
+     
+        <form action="/addService" method="POST">
+          <div class="form-group">
+            <h3><label for="serviceTypeSelect">Select a service type and add a new service</label></h3>
+            <select class="form-control" id="serviceTypeSelect" name='serviceType'>
+              <option>Flowers</option>
+              <option>Chocolatebox</option>
+              <option>Teaparty</option>
+              <option>Cheeseplatter</option>
+              <option>Coffees10</option>
+              <option>Breakfast</option>
+              <option>Lunch</option>
+              <option>Meatmeal</option>
+              <option>Fishmeal</option>
+              <option>Vegmeal</option>
+              <option>Bakerygoods</option>
+              <option>Hairstyle</option>
+            </select>
+            <small id="emailHelp" class="form-text text-muted">Only support Red, Blue, Yellow at this moment.</small>
+          </div>
+          <div class="form-group">
+            <h3><label for="exampleTextarea" class="form-label mt-4">Additional information about this service</label></h3>
+            <textarea class="form-control" id="exampleTextarea" rows="3" name = 'serviceDetail'></textarea>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg" id='updateBiller'>Create new service</button>
+          </div>
+          </form>
+
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="/" role="button">Back To Home</a>
+        </p>
+      </div>
+      
+
+</body>
+</html>

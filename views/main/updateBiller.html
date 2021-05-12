@@ -1,0 +1,151 @@
+<html>
+<head>
+<title>Manage Individual information</title>
+<link href="public/css/main.css" rel="stylesheet" type="text/css">
+<link href="public/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="public/fontAwesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<script src="public/js/jquery-1.12.4.min.js"></script>
+
+
+
+</head>
+<body>
+    
+    <div class="jumbotron">
+      <h1 class="display-3"><p class="text-success">Update biller information below</p></h1>
+        <h3>Currently only support 5 records most</h3>
+        
+
+        <!-- <h4><p>Now you can create or modify the biller.</p><h4> -->
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-lg" id="checkBiller">Check all biller</button>  
+                    <br></br>
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">Biller Id</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Invoice Name</th>
+                            <th scope="col">Biller email</th>
+                            <th scope="col">Operation</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="table-active">
+                            <th scope="row" id="billerId0">none</th>
+                            <td id="billerUsername0">Default</td>
+                            <td id="billerName0">Default</td>
+                            <td id="billerEmail0">Default</td>
+                            <td><button class="btn btn-info btn-lg" id='updateBiller0'><span id='billerSpan0'><h6>Not available</h6></span></button></td>
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="billerId1">none</th>
+                            <td id="billerUsername1">Default</td>
+                            <td id="billerName1">Default</td>
+                            <td id="billerEmail1">Default</td>
+                            <td><button class="btn btn-info btn-lg" id='updateBiller1'><span id='billerSpan1'><h6>Not available</h6></span></button></td>
+                          </tr><tr class="table-active">
+                            <th scope="row" id="billerId2">none</th>
+                            <td id="billerUsername2">Default</td>
+                            <td id="billerName2">Default</td>
+                            <td id="billerEmail2">Default</td>
+                            <td><button class="btn btn-info btn-lg" id='updateBiller2' ><span id='billerSpan2'><h6>Not available</h6></span></button></td>
+                          </tr><tr class="table-active">
+                            <th scope="row" id="billerId3">none</th>
+                            <td id="billerUsername3">Default</td>
+                            <td id="billerName3">Default</td>
+                            <td id="billerEmail3">Default</td>
+                            <td><button class="btn btn-info btn-lg" id='updateBiller3'><span id='billerSpan3'><h6>Not available</h6></span></button></td>
+                          </tr><tr class="table-active">
+                            <th scope="row" id="billerId4">none</th>
+                            <td id="billerUsername4">Default</td>
+                            <td id="billerName4">Default</td>
+                            <td id="billerEmail4">Default</td>
+                            <td><button class="btn btn-info btn-lg" id='updateBiller4'><span id='billerSpan4'><h6>Not available</h6></span></button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    
+                </div>
+            </div>
+            <!-- <div id="billerId1">111111</div>
+            <p class="lead">
+                <a class="btn btn-primary" href="/" role="button" id="jump">Jump</a>
+              </p> -->
+
+        <p class="lead">
+          <a class="btn btn-primary" href="/" role="button">Back To Home</a>
+        </p>
+      </div>
+      
+
+<script>
+var billerId1,billerId2,billerId3,billerId4,billerId5;
+var billIdArr;
+var length;  var idArr = new Array();
+
+$("#checkBiller").on('click',function(){
+            $.ajax({
+            url:'/checkBiller',
+            type:'get',
+            data:{
+            },
+            dataType:'json',
+            success:function(result){
+                length = result.length;
+                console.log('result长度：'+result.length)
+                // console.log('billarr【i】：'+result[1]._id)
+                console.log(result)
+            var i = 0;
+            for(i; i<result.length; i++)
+            {
+                document.getElementById('billerId'+i).innerHTML=result[i]._id;
+                document.getElementById('billerUsername'+i).innerHTML=result[i].username;
+                document.getElementById('billerName'+i).innerHTML=result[i].biller_name;
+                document.getElementById('billerEmail'+i).innerHTML=result[i].biller_email;
+                document.getElementById('billerSpan'+i).innerHTML='update';
+            }
+            var m = 0;
+          
+            for(m; m<length; m++)
+            {
+                idArr.push(result[m]._id)
+            }
+            }
+
+        })
+    })
+
+$("#updateBiller0").on("click",function(){
+    url = "/updateBiller/"+idArr[0];
+    window.location.href = url;
+            });
+            $("#updateBiller1").on("click",function(){
+            url = "/updateBiller/"+idArr[1];
+            window.location.href = url;
+         
+            });
+            $("#updateBiller2").on("click",function(){
+            url = "/updateBiller/"+idArr[2];
+            window.location.href = url;
+         
+            });
+            $("#updateBiller3").on("click",function(){
+            url = "/updateBiller/"+idArr[3];
+            window.location.href = url;
+         
+            });
+            $("#updateBiller4").on("click",function(){
+            url = "/updateBiller/"+idArr[4];
+            window.location.href = url;
+         
+            });
+
+ 
+</script>
+
+</body>
+</html>

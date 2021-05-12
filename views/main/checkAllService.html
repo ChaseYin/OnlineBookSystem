@@ -1,0 +1,160 @@
+<html>
+<head>
+<title>Check service below</title>
+<link href="../public/css/main.css" rel="stylesheet" type="text/css">
+<link href="../public/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="../public/fontAwesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<script src="../public/js/jquery-1.12.4.min.js"></script>
+
+
+
+</head>
+<body>
+    
+    <div class="jumbotron">
+      <h1 class="display-3"><p class="text-success">Check service below</p></h1>
+        <h3>Currently only support 12 records most</h3>
+        
+
+        <!-- <h4><p>Now you can create or modify the biller.</p><h4> -->
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-lg" id="checkService">Check all service</button>  
+                    <br></br>
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">Service Type</th>
+                            <th scope="col">Service detail</th>
+                
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType0">none</th>
+                            <td id="serviceDetail0">Default</td>
+                          
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType1">none</th>
+                            <td id="serviceDetail1">Default</td>
+                            
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType2">none</th>
+                            <td id="serviceDetail2">Default</td>
+
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType3">none</th>
+                            <td id="serviceDetail3">Default</td>
+                           
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType4">none</th>
+                            <td id="serviceDetail4">Default</td>
+                           
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType5">none</th>
+                            <td id="serviceDetail5">Default</td>
+                            
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType0">none</th>
+                            <td id="serviceDetail0">Default</td>
+                            
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType6">none</th>
+                            <td id="serviceDetail6">Default</td>
+                            
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType7">none</th>
+                            <td id="serviceDetail7">Default</td>
+                          
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType8">none</th>
+                            <td id="serviceDetail8">Default</td>
+                            
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType9">none</th>
+                            <td id="serviceDetail9">Default</td>
+                            
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType10">none</th>
+                            <td id="serviceDetail10">Default</td>
+                            
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType11">none</th>
+                            <td id="serviceDetail11">Default</td>
+                            
+                          </tr>
+                         
+                        </tbody>
+                      </table>
+                    
+                </div>
+            </div>
+            <!-- <div id="billerId1">111111</div>
+            <p class="lead">
+                <a class="btn btn-primary" href="/" role="button" id="jump">Jump</a>
+              </p> -->
+              <p class="lead">
+                <a class="btn btn-primary" href="/manageService" role="button">Go to add service</a>
+              </p>
+        <p class="lead">
+          <a class="btn btn-primary" href="/" role="button">Back To Home</a>
+        </p>
+      </div>
+      
+
+<script>
+var length;  var serviceArr = new Array();
+
+$("#checkService").on('click',function(){
+            $.ajax({
+            url:'/checkService',
+            type:'get',
+            data:{
+            },
+            dataType:'json',
+            success:function(result){
+                length = result.length;
+                console.log('result长度：'+result.length)
+                // console.log('billarr【i】：'+result[1]._id)
+                console.log(result)
+            var i = 0;
+            for(i; i<result.length; i++)
+            {
+                document.getElementById('serviceType'+i).innerHTML=result[i].service_type;
+                document.getElementById('serviceDetail'+i).innerHTML=result[i].service_detail;
+                
+                // document.getElementById('serviceSpan'+i).innerHTML='Apply now';
+            }
+            var m = 0;
+          
+            for(m; m<length; m++)
+            {
+                serviceArr.push(result[m].service_type)
+            }
+            }
+
+        })
+    })
+
+
+            
+
+ 
+</script>
+
+</body>
+</html>

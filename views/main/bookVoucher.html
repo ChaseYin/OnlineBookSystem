@@ -1,0 +1,206 @@
+<html>
+<head>
+<title>Manage Individual information</title>
+<link href="public/css/main.css" rel="stylesheet" type="text/css">
+<link href="public/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="public/fontAwesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<script src="public/js/jquery-1.12.4.min.js"></script>
+
+
+
+</head>
+<body>
+    
+    <div class="jumbotron">
+      <h1 class="display-3"><p class="text-success">Check and book a voucher below</p></h1>
+        <h3>Currently only support 12 records most</h3>
+        
+
+        <!-- <h4><p>Now you can create or modify the biller.</p><h4> -->
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-lg" id="checkService">Check all voucher</button>  
+                    <br></br>
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">Service Type</th>
+                            <th scope="col">Service detail</th>
+                            <th scope="col">Operation</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType0">none</th>
+                            <td id="serviceDetail0">Default</td>
+                            <td><button class="btn btn-info btn-lg" id='applyService0'><span id='serviceSpan0'><h6>Not available</h6></span></button></td>
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType1">none</th>
+                            <td id="serviceDetail1">Default</td>
+                            <td><button class="btn btn-info btn-lg" id='applyService1'><span id='serviceSpan1'><h6>Not available</h6></span></button></td>
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType2">none</th>
+                            <td id="serviceDetail2">Default</td>
+                            <td><button class="btn btn-info btn-lg" id='applyService2'><span id='serviceSpan2'><h6>Not available</h6></span></button></td>
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType3">none</th>
+                            <td id="serviceDetail3">Default</td>
+                            <td><button class="btn btn-info btn-lg" id='applyService3'><span id='serviceSpan3'><h6>Not available</h6></span></button></td>
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType4">none</th>
+                            <td id="serviceDetail4">Default</td>
+                            <td><button class="btn btn-info btn-lg" id='applyService4'><span id='serviceSpan4'><h6>Not available</h6></span></button></td>
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType5">none</th>
+                            <td id="serviceDetail5">Default</td>
+                            <td><button class="btn btn-info btn-lg" id='applyService5'><span id='serviceSpan5'><h6>Not available</h6></span></button></td>
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType0">none</th>
+                            <td id="serviceDetail0">Default</td>
+                            <td><button class="btn btn-info btn-lg" id='applyService0'><span id='serviceSpan0'><h6>Not available</h6></span></button></td>
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType6">none</th>
+                            <td id="serviceDetail6">Default</td>
+                            <td><button class="btn btn-info btn-lg" id='applyService6'><span id='serviceSpan6'><h6>Not available</h6></span></button></td>
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType7">none</th>
+                            <td id="serviceDetail7">Default</td>
+                            <td><button class="btn btn-info btn-lg" id='applyService7'><span id='serviceSpan7'><h6>Not available</h6></span></button></td>
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType8">none</th>
+                            <td id="serviceDetail8">Default</td>
+                            <td><button class="btn btn-info btn-lg" id='applyService8'><span id='serviceSpan8'><h6>Not available</h6></span></button></td>
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType9">none</th>
+                            <td id="serviceDetail9">Default</td>
+                            <td><button class="btn btn-info btn-lg" id='applyService9'><span id='serviceSpan9'><h6>Not available</h6></span></button></td>
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType10">none</th>
+                            <td id="serviceDetail10">Default</td>
+                            <td><button class="btn btn-info btn-lg" id='applyService10'><span id='serviceSpan10'><h6>Not available</h6></span></button></td>
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="serviceType11">none</th>
+                            <td id="serviceDetail11">Default</td>
+                            <td><button class="btn btn-info btn-lg" id='applyService11'><span id='serviceSpan11'><h6>Not available</h6></span></button></td>
+                          </tr>
+                         
+                        </tbody>
+                      </table>
+                    
+                </div>
+            </div>
+            <!-- <div id="billerId1">111111</div>
+            <p class="lead">
+                <a class="btn btn-primary" href="/" role="button" id="jump">Jump</a>
+              </p> -->
+
+        <p class="lead">
+          <a class="btn btn-primary" href="/" role="button">Back To Home</a>
+        </p>
+      </div>
+      
+
+<script>
+var length;  var serviceArr = new Array();
+
+$("#checkService").on('click',function(){
+            $.ajax({
+            url:'/checkService',
+            type:'get',
+            data:{
+            },
+            dataType:'json',
+            success:function(result){
+                length = result.length;
+                console.log('result长度：'+result.length)
+                // console.log('billarr【i】：'+result[1]._id)
+                console.log(result)
+            var i = 0;
+            for(i; i<result.length; i++)
+            {
+                document.getElementById('serviceType'+i).innerHTML=result[i].service_type;
+                document.getElementById('serviceDetail'+i).innerHTML=result[i].service_detail;
+                
+                document.getElementById('serviceSpan'+i).innerHTML='Apply now';
+            }
+            var m = 0;
+          
+            for(m; m<length; m++)
+            {
+                serviceArr.push(result[m].service_type)
+            }
+            }
+
+        })
+    })
+
+$("#applyService0").on("click",function(){
+    url = "/applyService/"+serviceArr[0];
+    window.location.href = url;
+});
+$("#applyService1").on("click",function(){
+    url = "/applyService/"+serviceArr[1];
+    window.location.href = url;
+});
+$("#applyService2").on("click",function(){
+    url = "/applyService/"+serviceArr[2];
+    window.location.href = url;
+});
+$("#applyService3").on("click",function(){
+    url = "/applyService/"+serviceArr[3];
+    window.location.href = url;
+});
+$("#applyService4").on("click",function(){
+    url = "/applyService/"+serviceArr[4];
+    window.location.href = url;
+});
+$("#applyService5").on("click",function(){
+    url = "/applyService/"+serviceArr[5];
+    window.location.href = url;
+});
+$("#applyService6").on("click",function(){
+    url = "/applyService/"+serviceArr[6];
+    window.location.href = url;
+});
+$("#applyService7").on("click",function(){
+    url = "/applyService/"+serviceArr[7];
+    window.location.href = url;
+});
+$("#applyService8").on("click",function(){
+    url = "/applyService/"+serviceArr[8];
+    window.location.href = url;
+});
+$("#applyService9").on("click",function(){
+    url = "/applyService/"+serviceArr[9];
+    window.location.href = url;
+});
+$("#applyService10").on("click",function(){
+    url = "/applyService/"+serviceArr[10];
+    window.location.href = url;
+});
+$("#applyService11").on("click",function(){
+    url = "/applyService/"+serviceArr[11];
+    window.location.href = url;
+});
+
+            
+
+ 
+</script>
+
+</body>
+</html>

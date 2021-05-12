@@ -1,0 +1,144 @@
+<html>
+<head>
+<title>Manage Individual information</title>
+<link href="../public/css/main.css" rel="stylesheet" type="text/css">
+<link href="../public/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="../public/fontAwesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<script src="../public/js/jquery-1.12.4.min.js"></script>
+
+
+
+</head>
+<body>
+    
+    <div class="jumbotron">
+      <h1 class="display-3"><p class="text-success">Manage application below</p></h1>
+        <h3>Currently only support 12 records most</h3>
+        
+
+        <!-- <h4><p>Now you can create or modify the biller.</p><h4> -->
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-lg" id="checkIndividualVoucher">Check all voucher</button>  
+                    <br></br>
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">Service Type</th>
+                            <th scope="col">Applicant Name</th>
+                            <th scope="col">Operation</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="table-active">
+                            <th scope="row" id="voucherType0">none</th>
+                            <td id="applicant0">Default</td>
+                            <td><button class="btn btn-success btn-lg" id='acceptVoucher0'><span id='voucherSpan0'><h6>Not available</h6></span></button>
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="voucherType1">none</th>
+                            <td id="applicant1">Default</td>
+                            <td><button class="btn btn-success btn-lg" id='acceptVoucher1'><span id='voucherSpan1'><h6>Not available</h6></span></button></td>
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="voucherType2">none</th>
+                            <td id="applicant2">Default</td>
+                            <td><button class="btn btn-success btn-lg" id='acceptVoucher2'><span id='voucherSpan2'><h6>Not available</h6></span></button></td>
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="voucherType3">none</th>
+                            <td id="applicant3">Default</td>
+                            <td><button class="btn btn-success btn-lg" id='acceptVoucher3'><span id='voucherSpan3'><h6>Not available</h6></span></button></td>
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="voucherType4">none</th>
+                            <td id="applicant4">Default</td>
+                            <td><button class="btn btn-success btn-lg" id='acceptVoucher4'><span id='voucherSpan4'><h6>Not available</h6></span></button></td>
+                          </tr>
+                          <tr class="table-active">
+                            <th scope="row" id="voucherType5">none</th>
+                            <td id="applicant5">Default</td>
+                            <td><button class="btn btn-success btn-lg" id='acceptVoucher5'><span id='voucherSpan5'><h6>Not available</h6></span></button></td>
+                          </tr>
+                         
+                        </tbody>
+                      </table>
+                    
+                </div>
+            </div>
+            <!-- <div id="billerId1">111111</div>
+            <p class="lead">
+                <a class="btn btn-primary" href="/" role="button" id="jump">Jump</a>
+              </p> -->
+
+        <p class="lead">
+          <a class="btn btn-primary" href="/" role="button">Back To Home</a>
+        </p>
+      </div>
+      
+
+<script>
+var length;  var voucherArr = new Array();
+
+$("#checkVoucher").on('click',function(){
+            $.ajax({
+            url:'/checkVoucher',
+            type:'get',
+            data:{
+            },
+            dataType:'json',
+            success:function(result){
+                length = result.length;
+                console.log('result长度：'+result.length)
+                // console.log('billarr【i】：'+result[1]._id)
+                console.log(result)
+            var i = 0;
+            for(i; i<result.length; i++)
+            {
+                document.getElementById('voucherType'+i).innerHTML=result[i].voucher_type;
+                document.getElementById('applicant'+i).innerHTML=result[i].voucher_userName;
+                document.getElementById('voucherSpan'+i).innerHTML='Accept';
+            }
+            var m = 0;
+          
+            for(m; m<length; m++)
+            {
+                voucherArr.push(result[m]._id)
+            }
+            }
+
+        })
+    })
+
+$("#acceptVoucher0").on("click",function(){
+    url = "/acceptVoucher/"+voucherArr[0];
+    window.location.href = url;
+});
+
+$("#acceptVoucher1").on("click",function(){
+    url = "/acceptVoucher/"+voucherArr[1];
+    window.location.href = url;
+});
+$("#acceptVoucher2").on("click",function(){
+    url = "/acceptVoucher/"+voucherArr[2];
+    window.location.href = url;
+});
+$("#acceptVoucher3").on("click",function(){
+    url = "/acceptVoucher/"+voucherArr[3];
+    window.location.href = url;
+});
+$("#acceptVoucher4").on("click",function(){
+    url = "/acceptVoucher/"+voucherArr[4];
+    window.location.href = url;
+});
+$("#acceptVoucher5").on("click",function(){
+    url = "/acceptVoucher/"+voucherArr[5];
+    window.location.href = url;
+});
+ 
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>Manage Individual information</title>
+<link href="../public/css/main.css" rel="stylesheet" type="text/css">
+<link href="../public/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="../public/fontAwesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<script src="../public/js/jquery-1.12.4.min.js"></script>
+
+
+
+</head>
+<body>
+    
+    <div class="jumbotron">
+      <h1 class="display-3"><p class="text-success">Apply {{serviceType}} service below</p></h1>
+        <h1 class="display-3"></h1>
+        
+        {{userId}},{{username}},{{name}},{{serviceType}}
+        <!-- <h4><p>Now you can create or modify the biller.</p><h4> -->
+        <h3>Input some compulsory information below</h3>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="/applyService" method="POST">
+                        <div class="form-group">
+                            <br></br>
+                          <label for="deliveryTypeSelect">Select a delivery type</label>
+                          <select class="form-control" id="deliverTypeSelect" name='deliveryType'>
+                            <option>Local delivery to the MYD offices</option>
+                            <option>Pick-up from the service</option>
+                            
+                          </select>
+                        
+                          <!-- <small id="emailHelp" class="form-text text-muted">Only support Red, Blue, Yellow at this moment.</small> -->
+                        </div>
+                        <div class="form-group" style="display:none">
+                            <label for="serviceType">serviceType</label>
+                            <input type="text" name="serviceType" value={{serviceType}} autofocus="autofocus" class="form-control"/>
+                        </div>
+                        <div class="form-group" style="display:none">
+                            <label for="serviceType">userId</label>
+                            <input type="text" name="userId" value={{userId}} autofocus="autofocus" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="serviceDate">Service date</label>
+                            <input type="date" name="serviceDate" value="" autofocus="autofocus" class="form-control"/>
+                          </div>
+                          <div class="form-group">
+                            <label for="serviceTime">Service time</label>
+                            <input type="time" name="serviceTime" value=""  autofocus="autofocus" class="form-control"/>
+                          </div>
+                        <div class="form-group">
+                          <h3><label for="optionalMessage" class="form-label mt-4">Optional message for this service</label></h3>
+                          <textarea class="form-control" id="optionalInfo" rows="3" name = 'optionalMessage'></textarea>
+                        </div>
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-primary btn-lg" id='applyService'>Apply</button>
+                        </div>
+                        </form>
+                   
+                </div>
+            </div>
+
+
+
+        <p class="lead">
+          <a class="btn btn-primary" href="/" role="button">Back To Home</a>
+        </p>
+      </div>
+      
+
+</body>
+</html>
